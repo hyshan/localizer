@@ -163,6 +163,17 @@ public class Generator {
                 m.body()._return(inv);
 
                 m.javadoc().add(escape(value));
+
+                // generate statusCode localizable factory
+                args.clear();
+                m = c.method(JMod.PUBLIC | JMod.STATIC, cm.ref(StatusCode.class), '_'+toJavaIdentifier(key));
+                for( int i=1; i<=n; i++ )
+                    args.add(m.param(Object.class,"arg"+i));
+                inv = JExpr._new(cm.ref(LocalizableStatusCode.class)).arg(JExpr._new(cm.ref(Localizable.class)).arg(holder).arg(key));
+                for (JVar arg : args)
+                    inv.arg(arg);
+                m.body()._return(inv);
+                m.javadoc().add(escape(value));
             }
 
         } catch (JClassAlreadyExistsException e) {
