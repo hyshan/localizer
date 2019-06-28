@@ -3,7 +3,7 @@
   <groupId>org.jvnet.localizer</groupId>
   <artifactId>localizer-parent</artifactId>
   <packaging>pom</packaging>
-  <version>1.25-SNAPSHOT</version>
+  <version>1.27-SNAPSHOT</version>
   <name>Localizer parent POM</name>
   <modules>
     <module>lib</module>
@@ -45,6 +45,12 @@
         <version>2.5.1</version>
         <configuration>
           <releaseProfiles>release</releaseProfiles>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <configuration>
+          <doclint>none</doclint>
         </configuration>
       </plugin>
     </plugins>
